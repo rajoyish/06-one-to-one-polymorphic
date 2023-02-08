@@ -18,9 +18,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        User::factory(10)->create()->each(function ($user) {
+            $image = Image::factory()->make();
+            $user->image()->save($image);
+        });
 
-        Post::factory(10)->create();
-        Image::factory(20)->create();
+        Post::factory(10)->create()->each(function ($post) {
+            $image = Image::factory()->make();
+            $post->image()->save($image);
+        });
     }
 }

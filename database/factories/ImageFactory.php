@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Post;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,8 +18,6 @@ class ImageFactory extends Factory
     {
         return [
             'url' => fake()->imageUrl(),
-            'imageable_id' => fake()->numberBetween(1, 10),
-            'imageable_type' => fake()->randomElement([Post::class, User::class]),
         ];
     }
 }
