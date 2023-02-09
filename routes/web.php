@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\IndexImageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +18,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // $images = Image::with('imageable')
+    //     ->get();
+
+    // // return $images;
+
+    // foreach ($images as $image) {
+
+    //     if ($image->imageable_type === 'App\Models\User') {
+    //         echo $image->imageable->name;
+    //     }
+    // }
+
     return view('welcome');
 });
 
 Route::resource('posts', PostController::class);
+Route::get('images', IndexImageController::class)->name('images');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
